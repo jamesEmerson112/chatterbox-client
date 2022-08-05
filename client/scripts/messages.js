@@ -5,9 +5,24 @@
 var Messages = {
 
   // TODO: Define how you want to store your messages.
-  _data: null,
+  _data: {},
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
+
+  add: function(message, callback) {
+    Messages._data[message.objectId] = message;
+    callback(Object.values(Messages._data));
+  },
+
+  update: function(messages, callback) {
+    // concat for object
+    // push for array
+    // Messages._data = Messages._data.concat(messages);
+    for (const message of messages) {
+      Message._data[message.objectId] = message;
+    }
+    callback(Object.values(Messages._data)); // what is this callback something about reusing this
+  }
 
 };
